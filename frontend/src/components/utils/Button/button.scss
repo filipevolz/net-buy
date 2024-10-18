@@ -1,0 +1,9 @@
+@import '../../../styles/variables.scss';
+
+button {
+    padding: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: none;
+    background-color: $secondary-color;
+}

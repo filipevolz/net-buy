@@ -1,0 +1,12 @@
+.input-content{
+    input {
+        padding: 0.8rem 1rem;
+        width: 400px;
+        border: 1px solid #e5e5e5;
+    }
+
+    input::-webkit-input-placeholder{
+        font-size: 1rem;
+        opacity: 0.5;
+    }
+}

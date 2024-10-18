@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+header{
+    background-color: $white-color;
+    padding: 30px 100px;
+        .logo{
+            img {
+                height: 40px;
+            }
+        }
+}
