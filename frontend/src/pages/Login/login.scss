@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+
+#forgot-password {
+    a {
+        color: #0077b6;
+        font-size: 0.9rem;
+    }
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    div {
+        flex-grow: 1;
+        height: 1px;
+        background-color: #ccc;
+    }
+}
+
+.more-options-login {
+    display: flex;
+    justify-content: space-between;
+ 
+    .login-facebook,
+    .login-google{
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            border-radius: 5px;
+            width: 140px;
+            transition: 0.1s ease-in-out;
+
+            img {
+                height: 30px;
+                color: red;
+            }
+
+            p{
+                color: black;
+            }
+        }
+
+        a:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.new-client {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+        a {
+            color: $primary-color;
+        }
+    }
+}
