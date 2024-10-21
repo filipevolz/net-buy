@@ -1,9 +1,10 @@
+import { MouseEvent } from 'react';
 import './button.scss';
 
 export interface ButtonProps {
     type: "button" | "reset" | "submit";
     children: string;
-    onClick: () => any;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 export function Button({type, children, onClick}: ButtonProps){

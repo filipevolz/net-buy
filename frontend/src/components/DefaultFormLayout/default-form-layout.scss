@@ -11,7 +11,6 @@ main {
         gap: 20rem;
         background-color: $primary-color;
         padding: 10rem;
-        width: 100%;
 
         .presentation {
             display: flex;
@@ -40,12 +39,14 @@ main {
             h3{
                 font-weight: 400;
                 font-size: 2rem;
+                padding-bottom: 1.5rem;
             }
 
             form {
                 display: flex;
                 flex-direction: column;
                 gap: 2.2rem;
+                padding-bottom: 1rem;
             }
         }
     }

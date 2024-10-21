@@ -1,18 +1,42 @@
 import { Input } from '../../components/utils/Input';
 import { Button } from '../../components/utils/Button';
 import { ChangeEvent, useState } from 'react';
-import iconFacebook from '../../assets/facebook-icon.svg';
-import iconGoogle from '../../assets/google-icon.svg';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './login.scss';
 
-export function Login(){
-    const [ email, setEmail ] = useState('')
-    const [ password, setPassword ] = useState('') 
+export function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const submitHandler = async (event: React.FormEvent) => {
+        event.preventDefault();
+
+        const response = await fetch('http://localhost:8000/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Login bem-sucedido:', data);
+            toast.success('Login bem-sucedido!'); // Mensagem de sucesso
+            // Aqui você pode redirecionar o usuário ou armazenar o token
+            // Exemplo: localStorage.setItem('token', data.token);
+        } else {
+            const errorText = await response.text(); // Obter texto do erro
+            toast.error('Erro ao fazer login: ' + errorText); // Mensagem de erro
+            console.error('Erro ao fazer login:', errorText);
+        }
+    };
 
     return (
-        <div className='form-container'>
+        <div className='form-login'>
             <h3>Entre</h3>
-            <form>
+            <form onSubmit={submitHandler}>
                 <Input
                     type='text'
                     placeholder='Email'
@@ -28,32 +52,10 @@ export function Login(){
                 <Button
                     type='submit'
                     children='Entre'
-                    onClick={() => console.log("clicou")}
                 />
             </form>
             <span id='forgot-password'><a href="">Esqueci minha senha</a></span>
-            <div className='divider'>
-                <div></div>
-                <span>OU</span>
-                <div></div>
-            </div>
-            <div className='more-options-login'>
-                <div className='login-facebook'>
-                    <a href="">
-                        <img src={iconFacebook} alt="Icon from Facebook" />
-                        <p>Facebook</p>
-                    </a>
-                </div>
-                <div className='login-google'>
-                    <a href="">
-                        <img src={iconGoogle} alt="Icon from Google" />
-                        <p>Google</p>
-                    </a>
-                </div>
-            </div>
-            <div className='new-client'>
-                <p>Novo na NetBuy? <span><a href="">Cadastrar</a></span></p>
-            </div>
+            <ToastContainer /> {/* Contêiner para os Toasts */}
         </div>
-    )
+    );
 }
